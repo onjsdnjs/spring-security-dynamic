@@ -15,21 +15,26 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "role")
 @Data
-@ToString(exclude = {"authorities", "roleResources"})
+@ToString(exclude = {"authorities", "roleResources", "groups"})
 public class Role {
 
   @Id
-  @GeneratedValue(strategy = IDENTITY)
+  @GeneratedValue
   @Column(name = "ROLE_ID", unique = true, nullable = false)
-  private Integer roleId;
+  private Integer id;
 
   private String roleName;
+
+  private String roleDesc;
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "role")
   private Set<Authorities> authorities = new HashSet<>();
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "role")
   private Set<RoleResource> roleResources = new HashSet<>();
+
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "role")
+  private Set<GroupsRole> groups = new HashSet<>();
 
 
 }

@@ -1,5 +1,6 @@
-package me.wonwoo.domain;
+package me.wonwoo.service;
 
+import me.wonwoo.domain.User;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.util.List;

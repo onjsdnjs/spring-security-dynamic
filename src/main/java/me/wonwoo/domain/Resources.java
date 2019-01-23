@@ -16,8 +16,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Resources {
 
   @Id
-  @GeneratedValue(strategy = IDENTITY)
-  @Column(name = "ID", unique = true, nullable = false)
+  @GeneratedValue
+  @Column(name = "RESOURCE_ID", unique = true, nullable = false)
   private Integer id;
 
   private String name;

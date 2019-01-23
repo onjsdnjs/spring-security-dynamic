@@ -5,13 +5,11 @@ import lombok.ToString;
 
 import javax.persistence.*;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
 @Entity
-@Table(name = "role_resource")
+@Table(name = "groups_user")
 @Data
-@ToString(exclude = {"role", "resources"})
-public class RoleResource {
+@ToString(exclude = {"groups", "user"})
+public class GroupsUser {
 
   @Id
   @GeneratedValue
@@ -19,11 +17,11 @@ public class RoleResource {
   private Integer id;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "ROLE_ID")
-  private Role role;
+  @JoinColumn(name = "GROUP_ID")
+  private Groups groups;
 
   @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "RESOURCE_ID")
-  private Resources resources;
+  @JoinColumn(name = "USER_ID")
+  private User user;
 
 }

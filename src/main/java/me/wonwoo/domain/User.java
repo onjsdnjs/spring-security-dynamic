@@ -10,12 +10,12 @@ import java.util.List;
 @Entity
 @Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = "USERNAME"))
 @Data
-@ToString(exclude = "userRoles")
+@ToString(exclude = {"userRoles", "groupUsers"})
 public class User {
 
   @Id
   @GeneratedValue
-  @Column(name = "ID", unique = true, nullable = false)
+  @Column(name = "USER_ID", unique = true, nullable = false)
   private Integer id;
 
   @Column(name = "USERNAME", unique = true, length = 50)
@@ -26,4 +26,7 @@ public class User {
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
   private List<Authorities> userRoles = new ArrayList<>();
+
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+  private List<GroupsUser> groupUsers = new ArrayList<>();
 }

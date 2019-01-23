@@ -1,9 +1,7 @@
 package me.wonwoo.service;
 
 import lombok.extern.slf4j.Slf4j;
-import me.wonwoo.domain.RoleHierarchy;
 import me.wonwoo.domain.User;
-import me.wonwoo.domain.UserDetail;
 import me.wonwoo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,7 +10,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

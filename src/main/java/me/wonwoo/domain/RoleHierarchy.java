@@ -13,9 +13,10 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RoleHierarchy {
+
     @Id
     @Column(name = "ROLE_ID")
-    private String roleId;
+    private Integer roleId;
 
     @Column(name = "ROLE_NAME")
     private String roleName;

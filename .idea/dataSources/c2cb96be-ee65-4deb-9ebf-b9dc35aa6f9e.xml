@@ -93,8 +93,8 @@
       <ObjectId>2200</ObjectId>
       <Comment>standard public schema</Comment>
       <Owner>postgres</Owner>
-      <IntrospectionTimestamp>2019-01-23.14:42:33.338</IntrospectionTimestamp>
-      <IntrospectionStateNumber>779</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2019-01-23.19:06:38.947</IntrospectionTimestamp>
+      <IntrospectionStateNumber>3403</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -141,296 +141,404 @@
       <Type>index</Type>
     </access-method>
     <sequence id="25" parent="18" name="hibernate_sequence">
-      <ObjectId>16792</ObjectId>
+      <ObjectId>19893</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>779</StateNumber>
+      <StateNumber>3384</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
     </sequence>
-    <sequence id="26" parent="18" name="resources_id_seq">
-      <ObjectId>16728</ObjectId>
+    <table id="26" parent="18" name="authorities">
+      <ObjectId>19895</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>768</StateNumber>
-      <SequenceIdentity>1..2147483647</SequenceIdentity>
-      <BelongsToColumn>1</BelongsToColumn>
-      <CacheSize>1</CacheSize>
-      <DataType>integer</DataType>
-    </sequence>
-    <sequence id="27" parent="18" name="role_resource_id_seq">
-      <ObjectId>16752</ObjectId>
+      <StateNumber>3395</StateNumber>
+    </table>
+    <table id="27" parent="18" name="groups">
+      <ObjectId>19900</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>771</StateNumber>
-      <SequenceIdentity>1..2147483647</SequenceIdentity>
-      <BelongsToColumn>1</BelongsToColumn>
-      <CacheSize>1</CacheSize>
-      <DataType>integer</DataType>
-    </sequence>
-    <sequence id="28" parent="18" name="role_role_id_seq">
-      <ObjectId>16736</ObjectId>
+      <StateNumber>3397</StateNumber>
+    </table>
+    <table id="28" parent="18" name="groups_role">
+      <ObjectId>19905</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>769</StateNumber>
-      <SequenceIdentity>1..2147483647</SequenceIdentity>
-      <BelongsToColumn>1</BelongsToColumn>
-      <CacheSize>1</CacheSize>
-      <DataType>integer</DataType>
-    </sequence>
-    <table id="29" parent="18" name="authorities">
-      <ObjectId>16723</ObjectId>
+      <StateNumber>3397</StateNumber>
+    </table>
+    <table id="29" parent="18" name="groups_user">
+      <ObjectId>19910</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>774</StateNumber>
+      <StateNumber>3399</StateNumber>
     </table>
     <table id="30" parent="18" name="resources">
-      <ObjectId>16730</ObjectId>
+      <ObjectId>19915</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>777</StateNumber>
+      <StateNumber>3402</StateNumber>
     </table>
     <table id="31" parent="18" name="role">
-      <ObjectId>16738</ObjectId>
+      <ObjectId>19920</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>774</StateNumber>
+      <StateNumber>3395</StateNumber>
     </table>
     <table id="32" parent="18" name="role_hierarchy">
-      <ObjectId>16744</ObjectId>
+      <ObjectId>19928</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>776</StateNumber>
+      <StateNumber>3401</StateNumber>
     </table>
     <table id="33" parent="18" name="role_resource">
-      <ObjectId>16754</ObjectId>
+      <ObjectId>19933</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>777</StateNumber>
+      <StateNumber>3402</StateNumber>
     </table>
     <table id="34" parent="18" name="users">
-      <ObjectId>16760</ObjectId>
+      <ObjectId>19938</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>775</StateNumber>
+      <StateNumber>3396</StateNumber>
     </table>
-    <column id="35" parent="29" name="id">
+    <column id="35" parent="26" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>767</StateNumber>
+      <StateNumber>3385</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="36" parent="29" name="user_role">
+    <column id="36" parent="26" name="user_role">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>767</StateNumber>
+      <StateNumber>3385</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="37" parent="29" name="user_id">
+    <column id="37" parent="26" name="user_id">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>767</StateNumber>
+      <StateNumber>3385</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="38" parent="29" name="authorities_pkey">
-      <ObjectId>16726</ObjectId>
+    <index id="38" parent="26" name="authorities_pkey">
+      <ObjectId>19898</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="39" parent="29" name="authorities_pkey">
-      <ObjectId>16727</ObjectId>
+    <key id="39" parent="26" name="authorities_pkey">
+      <ObjectId>19899</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>authorities_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="40" parent="29" name="fk_8ri9nq33us6wuuhojc5tbkiqm">
-      <ObjectId>16767</ObjectId>
+    <foreign-key id="40" parent="26" name="fkbvn1rlwcdqjouvq1746k1e8mo">
+      <ObjectId>19945</ObjectId>
       <ColNames>user_role</ColNames>
-      <RefTableId>16738</RefTableId>
+      <RefTableId>19920</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>role</RefTableName>
       <RefKeyName>role_pkey</RefKeyName>
       <RefColNames>role_id</RefColNames>
     </foreign-key>
-    <foreign-key id="41" parent="29" name="fk_s21btj9mlob1djhm3amivbe5e">
-      <ObjectId>16772</ObjectId>
+    <foreign-key id="41" parent="26" name="fkk91upmbueyim93v469wj7b2qh">
+      <ObjectId>19950</ObjectId>
       <ColNames>user_id</ColNames>
-      <RefTableId>16760</RefTableId>
+      <RefTableId>19938</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>users</RefTableName>
       <RefKeyName>users_pkey</RefKeyName>
-      <RefColNames>id</RefColNames>
+      <RefColNames>user_id</RefColNames>
     </foreign-key>
-    <column id="42" parent="30" name="id">
+    <column id="42" parent="27" name="group_id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>768</StateNumber>
-      <DefaultExpression>nextval(&apos;resources_id_seq&apos;::regclass)</DefaultExpression>
+      <StateNumber>3386</StateNumber>
       <TypeId>23</TypeId>
-      <SequenceName>resources_id_seq</SequenceName>
     </column>
-    <column id="43" parent="30" name="name">
+    <column id="43" parent="27" name="group_name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>768</StateNumber>
+      <StateNumber>3386</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="44" parent="30" name="resources_pkey">
-      <ObjectId>16734</ObjectId>
+    <index id="44" parent="27" name="groups_pkey">
+      <ObjectId>19903</ObjectId>
+      <ColNames>group_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="45" parent="27" name="groups_pkey">
+      <ObjectId>19904</ObjectId>
+      <ColNames>group_id</ColNames>
+      <UnderlyingIndexName>groups_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="46" parent="28" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>3387</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="47" parent="28" name="group_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>3387</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="48" parent="28" name="role_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>3387</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="49" parent="28" name="groups_role_pkey">
+      <ObjectId>19908</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="45" parent="30" name="resources_pkey">
-      <ObjectId>16735</ObjectId>
+    <key id="50" parent="28" name="groups_role_pkey">
+      <ObjectId>19909</ObjectId>
       <ColNames>id</ColNames>
+      <UnderlyingIndexName>groups_role_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="51" parent="28" name="fkghgmlhrcpxwun61p0je94s7c0">
+      <ObjectId>19955</ObjectId>
+      <ColNames>group_id</ColNames>
+      <RefTableId>19900</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>groups</RefTableName>
+      <RefKeyName>groups_pkey</RefKeyName>
+      <RefColNames>group_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="52" parent="28" name="fkjnjiba883u5v6y2xabykv0j2g">
+      <ObjectId>19960</ObjectId>
+      <ColNames>role_id</ColNames>
+      <RefTableId>19920</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>role</RefTableName>
+      <RefKeyName>role_pkey</RefKeyName>
+      <RefColNames>role_id</RefColNames>
+    </foreign-key>
+    <column id="53" parent="29" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>3388</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="54" parent="29" name="group_id">
+      <Position>2</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>3388</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="55" parent="29" name="user_id">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>3388</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="56" parent="29" name="groups_user_pkey">
+      <ObjectId>19913</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="57" parent="29" name="groups_user_pkey">
+      <ObjectId>19914</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>groups_user_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="58" parent="29" name="fk5lsqwbe9ou1tkjk0f6aj2105q">
+      <ObjectId>19965</ObjectId>
+      <ColNames>group_id</ColNames>
+      <RefTableId>19900</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>groups</RefTableName>
+      <RefKeyName>groups_pkey</RefKeyName>
+      <RefColNames>group_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="59" parent="29" name="fk4idvdbl812vfdjnxf8wx2bfjp">
+      <ObjectId>19970</ObjectId>
+      <ColNames>user_id</ColNames>
+      <RefTableId>19938</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>users</RefTableName>
+      <RefKeyName>users_pkey</RefKeyName>
+      <RefColNames>user_id</RefColNames>
+    </foreign-key>
+    <column id="60" parent="30" name="resource_id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>3389</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="61" parent="30" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>3389</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="62" parent="30" name="resources_pkey">
+      <ObjectId>19918</ObjectId>
+      <ColNames>resource_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="63" parent="30" name="resources_pkey">
+      <ObjectId>19919</ObjectId>
+      <ColNames>resource_id</ColNames>
       <UnderlyingIndexName>resources_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="46" parent="31" name="role_id">
+    <column id="64" parent="31" name="role_id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>769</StateNumber>
-      <DefaultExpression>nextval(&apos;role_role_id_seq&apos;::regclass)</DefaultExpression>
+      <StateNumber>3390</StateNumber>
       <TypeId>23</TypeId>
-      <SequenceName>role_role_id_seq</SequenceName>
     </column>
-    <column id="47" parent="31" name="role_name">
+    <column id="65" parent="31" name="role_desc">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>769</StateNumber>
+      <StateNumber>3390</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="48" parent="31" name="role_pkey">
-      <ObjectId>16742</ObjectId>
+    <column id="66" parent="31" name="role_name">
+      <Position>3</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>3390</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="67" parent="31" name="role_pkey">
+      <ObjectId>19926</ObjectId>
       <ColNames>role_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="49" parent="31" name="role_pkey">
-      <ObjectId>16743</ObjectId>
+    <key id="68" parent="31" name="role_pkey">
+      <ObjectId>19927</ObjectId>
       <ColNames>role_id</ColNames>
       <UnderlyingIndexName>role_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="50" parent="32" name="role_id">
+    <column id="69" parent="32" name="role_id">
       <Position>1</Position>
-      <DataType>varchar(255)|0s</DataType>
+      <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>770</StateNumber>
-      <TypeId>1043</TypeId>
+      <StateNumber>3391</StateNumber>
+      <TypeId>23</TypeId>
     </column>
-    <column id="51" parent="32" name="role_name">
+    <column id="70" parent="32" name="role_name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>770</StateNumber>
+      <StateNumber>3391</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="52" parent="32" name="parent_role_id">
+    <column id="71" parent="32" name="parent_role_id">
       <Position>3</Position>
-      <DataType>varchar(255)|0s</DataType>
-      <StateNumber>770</StateNumber>
-      <TypeId>1043</TypeId>
+      <DataType>integer|0s</DataType>
+      <StateNumber>3391</StateNumber>
+      <TypeId>23</TypeId>
     </column>
-    <index id="53" parent="32" name="role_hierarchy_pkey">
-      <ObjectId>16750</ObjectId>
+    <index id="72" parent="32" name="role_hierarchy_pkey">
+      <ObjectId>19931</ObjectId>
       <ColNames>role_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="54" parent="32" name="role_hierarchy_pkey">
-      <ObjectId>16751</ObjectId>
+    <key id="73" parent="32" name="role_hierarchy_pkey">
+      <ObjectId>19932</ObjectId>
       <ColNames>role_id</ColNames>
       <UnderlyingIndexName>role_hierarchy_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="55" parent="32" name="fk_r86dgho298ta5vahvi446fcsm">
-      <ObjectId>16777</ObjectId>
+    <foreign-key id="74" parent="32" name="fkebei7warhq5th6inooskpd6na">
+      <ObjectId>19975</ObjectId>
       <ColNames>parent_role_id</ColNames>
-      <RefTableId>16744</RefTableId>
+      <RefTableId>19928</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>role_hierarchy</RefTableName>
       <RefKeyName>role_hierarchy_pkey</RefKeyName>
       <RefColNames>role_id</RefColNames>
     </foreign-key>
-    <column id="56" parent="33" name="id">
+    <column id="75" parent="33" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>771</StateNumber>
-      <DefaultExpression>nextval(&apos;role_resource_id_seq&apos;::regclass)</DefaultExpression>
+      <StateNumber>3392</StateNumber>
       <TypeId>23</TypeId>
-      <SequenceName>role_resource_id_seq</SequenceName>
     </column>
-    <column id="57" parent="33" name="resource_id">
+    <column id="76" parent="33" name="resource_id">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>771</StateNumber>
+      <StateNumber>3392</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="58" parent="33" name="role_id">
+    <column id="77" parent="33" name="role_id">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>771</StateNumber>
+      <StateNumber>3392</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="59" parent="33" name="role_resource_pkey">
-      <ObjectId>16758</ObjectId>
+    <index id="78" parent="33" name="role_resource_pkey">
+      <ObjectId>19936</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="60" parent="33" name="role_resource_pkey">
-      <ObjectId>16759</ObjectId>
+    <key id="79" parent="33" name="role_resource_pkey">
+      <ObjectId>19937</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>role_resource_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="61" parent="33" name="fk_8mxwcdjdftg3le1dp65o0md3e">
-      <ObjectId>16782</ObjectId>
+    <foreign-key id="80" parent="33" name="fk9n7etkb3eqnlbni7k9sj3eiel">
+      <ObjectId>19980</ObjectId>
       <ColNames>resource_id</ColNames>
-      <RefTableId>16730</RefTableId>
+      <RefTableId>19915</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>resources</RefTableName>
       <RefKeyName>resources_pkey</RefKeyName>
-      <RefColNames>id</RefColNames>
+      <RefColNames>resource_id</RefColNames>
     </foreign-key>
-    <foreign-key id="62" parent="33" name="fk_pi1uyvvdin7grcttpe2bq9lox">
-      <ObjectId>16787</ObjectId>
+    <foreign-key id="81" parent="33" name="fkh8lunkrwoyio367ec8y12bis1">
+      <ObjectId>19985</ObjectId>
       <ColNames>role_id</ColNames>
-      <RefTableId>16738</RefTableId>
+      <RefTableId>19920</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>role</RefTableName>
       <RefKeyName>role_pkey</RefKeyName>
       <RefColNames>role_id</RefColNames>
     </foreign-key>
-    <column id="63" parent="34" name="id">
+    <column id="82" parent="34" name="user_id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>772</StateNumber>
+      <StateNumber>3393</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="64" parent="34" name="password">
+    <column id="83" parent="34" name="password">
       <Position>2</Position>
       <DataType>varchar(200)|0s</DataType>
-      <StateNumber>772</StateNumber>
+      <StateNumber>3393</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="65" parent="34" name="username">
+    <column id="84" parent="34" name="username">
       <Position>3</Position>
       <DataType>varchar(50)|0s</DataType>
-      <StateNumber>772</StateNumber>
+      <StateNumber>3393</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="66" parent="34" name="users_pkey">
-      <ObjectId>16763</ObjectId>
-      <ColNames>id</ColNames>
+    <index id="85" parent="34" name="users_pkey">
+      <ObjectId>19941</ObjectId>
+      <ColNames>user_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="67" parent="34" name="uk_r43af9ap4edm43mmtq01oddj6">
-      <ObjectId>16765</ObjectId>
+    <index id="86" parent="34" name="uk_r43af9ap4edm43mmtq01oddj6">
+      <ObjectId>19943</ObjectId>
       <ColNames>username</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="68" parent="34" name="users_pkey">
-      <ObjectId>16764</ObjectId>
-      <ColNames>id</ColNames>
+    <key id="87" parent="34" name="users_pkey">
+      <ObjectId>19942</ObjectId>
+      <ColNames>user_id</ColNames>
       <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="69" parent="34" name="uk_r43af9ap4edm43mmtq01oddj6">
-      <ObjectId>16766</ObjectId>
+    <key id="88" parent="34" name="uk_r43af9ap4edm43mmtq01oddj6">
+      <ObjectId>19944</ObjectId>
       <ColNames>username</ColNames>
       <UnderlyingIndexName>uk_r43af9ap4edm43mmtq01oddj6</UnderlyingIndexName>
     </key>
