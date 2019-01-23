@@ -25,9 +25,9 @@ public class RoleHierarchyService {
         while (itr.hasNext()) {
             RoleHierarchy model = itr.next();
             if (model.getParentRole() != null) {
-                concatedRoles.append(model.getParentRole().getRoleId());
+                concatedRoles.append(model.getParentRole().getRoleName());
                 concatedRoles.append(" > ");
-                concatedRoles.append(model.getRoleId());
+                concatedRoles.append(model.getRoleName());
                 concatedRoles.append("\n");
             }
         }

@@ -20,10 +20,10 @@ public class Groups {
 
   private String groupName;
 
- /* @OneToMany(fetch = FetchType.LAZY, mappedBy = "group")
-  private Set<GroupUser> users = new HashSet<>();
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "groups")
+  private Set<GroupsUser> users = new HashSet<>();
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "group")
-  private Set<GroupRole> roles = new HashSet<>();*/
+  @OneToMany(fetch = FetchType.LAZY, mappedBy = "groups")
+  private Set<GroupsRole> roles = new HashSet<>();
 
 }

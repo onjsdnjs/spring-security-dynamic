@@ -1,7 +1,6 @@
 package me.wonwoo.domain;
 
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,6 +10,9 @@ import java.util.List;
 @Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = "USERNAME"))
 @Data
 @ToString(exclude = {"userRoles", "groupUsers"})
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
   @Id

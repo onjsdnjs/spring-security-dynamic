@@ -19,11 +19,6 @@ public class SpringSecurityDynamicApplication {
   }
 
   @Bean
-  public PasswordEncoder passwordEncoder(){
-    return new BCryptPasswordEncoder();
-  }
-
-  @Bean
   public ResourceMetaService resourceMetaService(){
     return new ResourceMetaServiceImpl();
   }

@@ -15,6 +15,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
@@ -31,13 +32,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsService authenticationService;
 
     @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
     private RoleHierarchyService roleHierarchyService;
 
     @Autowired
     private FilterInvocationSecurityMetadataSource filterInvocationSecurityMetadataSource;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -59,8 +63,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(authenticationService).passwordEncoder(passwordEncoder);
+        auth.userDetailsService(authenticationService).passwordEncoder(passwordEncoder());
+    }
 
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
     @Bean
@@ -72,7 +80,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public FilterSecurityInterceptor filterSecurityInterceptor() throws Exception {
         FilterSecurityInterceptor filterSecurityInterceptor = new FilterSecurityInterceptor();
-        filterSecurityInterceptor.setAuthenticationManager(authenticationManagerBean());
+        filterSecurityInterceptor.setAuthenticationManager(authenticationManager);
         filterSecurityInterceptor.setSecurityMetadataSource(filterInvocationSecurityMetadataSource);
         filterSecurityInterceptor.setAccessDecisionManager(affirmativeBased());
         return filterSecurityInterceptor;

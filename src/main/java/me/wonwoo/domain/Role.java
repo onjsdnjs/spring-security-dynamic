@@ -35,6 +35,4 @@ public class Role {
 
   @OneToMany(fetch = FetchType.LAZY, mappedBy = "role")
   private Set<GroupsRole> groups = new HashSet<>();
-
-
 }
