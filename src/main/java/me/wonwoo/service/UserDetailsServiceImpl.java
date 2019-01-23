@@ -1,6 +1,7 @@
 package me.wonwoo.service;
 
 import lombok.extern.slf4j.Slf4j;
+import me.wonwoo.domain.RoleHierarchy;
 import me.wonwoo.domain.User;
 import me.wonwoo.domain.UserDetail;
 import me.wonwoo.repository.UserRepository;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,21 +20,21 @@ import java.util.stream.Collectors;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-  @Autowired
-  private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-  @Transactional(readOnly = true)
-  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    User user = userRepository.findByusername(username);
-    if (user == null) {
-      throw new UsernameNotFoundException("User doesn`t exist");
+    @Transactional(readOnly = true)
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByusername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("User doesn`t exist");
+        }
+        List<String> userRoles = user.getUserRoles()
+                .stream()
+                .map(userRole -> userRole.getRole().getRoleName())
+                .collect(Collectors.toList());
+        log.info("username : {} , role : {} : ", username, userRoles);
+
+        return new UserDetail(user, userRoles);
     }
-    List<String> userRoles = user.getUserRoles()
-      .stream()
-      .map(userRole -> userRole.getRole().getRoleName())
-      .collect(Collectors.toList());
-    log.info("username : {} , role : {} : ",  username , userRoles);
-
-    return new UserDetail(user, userRoles);
-  }
 }

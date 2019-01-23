@@ -5,15 +5,10 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
-import static javax.persistence.GenerationType.IDENTITY;
-import static me.wonwoo.domain.QUser.user;
 
 @Entity
-@Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = "USERNAME"))
+@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = "USERNAME"))
 @Data
 @ToString(exclude = "userRoles")
 public class User {

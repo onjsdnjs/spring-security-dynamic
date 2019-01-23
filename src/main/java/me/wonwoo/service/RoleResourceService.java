@@ -17,7 +17,7 @@ public class RoleResourceService {
 
   @Transactional
   public void delete(Integer id){
-    roleResourceRepository.delete(id);
+    roleResourceRepository.deleteById(id);
     resourceMetaServiceImpl.findAllResources();
   }
 }

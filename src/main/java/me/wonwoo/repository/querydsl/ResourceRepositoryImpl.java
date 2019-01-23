@@ -1,3 +1,4 @@
+/*
 package me.wonwoo.repository.querydsl;
 
 import com.mysema.query.types.ConstructorExpression;
@@ -26,3 +27,4 @@ public class ResourceRepositoryImpl extends QueryDslRepositorySupport implements
         return list;
     }
 }
+*/
