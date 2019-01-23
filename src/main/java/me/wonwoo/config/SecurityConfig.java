@@ -27,75 +27,78 @@ import java.util.List;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-  @Autowired
-  private AuthenticationManager authenticationManager;
+    @Autowired
+    private UserDetailsService authenticationService;
 
-  @Autowired
-  private UserDetailsService authenticationService;
+    @Autowired
+    private RoleHierarchyService roleHierarchyService;
 
-  @Autowired
-  private RoleHierarchyService roleHierarchyService;
+    @Autowired
+    private FilterInvocationSecurityMetadataSource filterInvocationSecurityMetadataSource;
 
-  @Autowired
-  private FilterInvocationSecurityMetadataSource filterInvocationSecurityMetadataSource;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-  @Autowired
-  private PasswordEncoder passwordEncoder;
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .antMatchers("/").permitAll()
+                .and()
+                .exceptionHandling().accessDeniedPage("/denied")
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/home")
+                .and()
+                .logout()
+                .logoutSuccessUrl("/login")
+                .and()
+                .addFilter(filterSecurityInterceptor());
+    }
 
-  @Override
-  protected void configure(HttpSecurity http) throws Exception {
-    http
-      .authorizeRequests()
-      .antMatchers("/").permitAll()
-      .and()
-      .exceptionHandling().accessDeniedPage("/denied")
-      .and()
-      .formLogin()
-      .loginPage("/login")
-      .defaultSuccessUrl("/home")
-      .and()
-      .logout()
-      .logoutSuccessUrl("/login")
-      .and()
-      .addFilter(filterSecurityInterceptor());
-  }
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(authenticationService).passwordEncoder(passwordEncoder);
 
-  @Override
-  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    auth.userDetailsService(authenticationService).passwordEncoder(passwordEncoder);
+    }
 
-  }
+    @Bean
+    @Override
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
 
-  @Bean
-  public FilterSecurityInterceptor filterSecurityInterceptor() {
-    FilterSecurityInterceptor filterSecurityInterceptor = new FilterSecurityInterceptor();
-    filterSecurityInterceptor.setAuthenticationManager(authenticationManager);
-    filterSecurityInterceptor.setSecurityMetadataSource(filterInvocationSecurityMetadataSource);
-    filterSecurityInterceptor.setAccessDecisionManager(affirmativeBased());
-    return filterSecurityInterceptor;
-  }
+    @Bean
+    public FilterSecurityInterceptor filterSecurityInterceptor() throws Exception {
+        FilterSecurityInterceptor filterSecurityInterceptor = new FilterSecurityInterceptor();
+        filterSecurityInterceptor.setAuthenticationManager(authenticationManagerBean());
+        filterSecurityInterceptor.setSecurityMetadataSource(filterInvocationSecurityMetadataSource);
+        filterSecurityInterceptor.setAccessDecisionManager(affirmativeBased());
+        return filterSecurityInterceptor;
+    }
 
-  @Bean
-  public AffirmativeBased affirmativeBased() {
-    List<AccessDecisionVoter<? extends Object>> accessDecisionVoters = new ArrayList<>();
-    accessDecisionVoters.add(roleVoter());
-    AffirmativeBased affirmativeBased = new AffirmativeBased(accessDecisionVoters);
-    return affirmativeBased;
-  }
+    @Bean
+    public AffirmativeBased affirmativeBased() {
+        List<AccessDecisionVoter<? extends Object>> accessDecisionVoters = new ArrayList<>();
+        accessDecisionVoters.add(roleVoter());
+        AffirmativeBased affirmativeBased = new AffirmativeBased(accessDecisionVoters);
+        return affirmativeBased;
+    }
 
-  @Bean
-  public RoleHierarchyVoter roleVoter() {
-    RoleHierarchyVoter roleHierarchyVoter = new RoleHierarchyVoter(roleHierarchy());
-    roleHierarchyVoter.setRolePrefix("ROLE_");
-    return roleHierarchyVoter;
-  }
+    @Bean
+    public RoleHierarchyVoter roleVoter() {
+        RoleHierarchyVoter roleHierarchyVoter = new RoleHierarchyVoter(roleHierarchy());
+        roleHierarchyVoter.setRolePrefix("ROLE_");
+        return roleHierarchyVoter;
+    }
 
-  //RoleHierarchy 설정
-  @Bean
-  public RoleHierarchy roleHierarchy() {
-    String allHierarchy = roleHierarchyService.findAllHierarchy();
-    RoleHierarchyImpl roleHierarchy = new RoleHierarchyImpl();
-    roleHierarchy.setHierarchy(allHierarchy);
-    return roleHierarchy;
-  }
+    //RoleHierarchy 설정
+    @Bean
+    public RoleHierarchy roleHierarchy() {
+        String allHierarchy = roleHierarchyService.findAllHierarchy();
+        RoleHierarchyImpl roleHierarchy = new RoleHierarchyImpl();
+        roleHierarchy.setHierarchy(allHierarchy);
+        return roleHierarchy;
+    }
 }

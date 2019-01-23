@@ -10,6 +10,7 @@ import me.wonwoo.security.CacheEventMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +31,8 @@ public class ResourceMetaServiceImpl implements ResourceMetaService {
   private ApplicationContext applicationContext;
 
   @Override
+  @Transactional
   public void findAllResources() {
-//    List<AuthoritiesDto> authorities2 = resourceRepository.findAllAuthorities();
     List<RoleResource> roleResources = roleResourceRepository.findAll();
     List<AuthoritiesDto> authorities = new ArrayList<>();
     roleResources.stream().forEach(roleResource -> {
